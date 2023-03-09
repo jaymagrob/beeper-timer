@@ -1,9 +1,16 @@
 import Script from "next/script";
 import '@/styles/globals.css'
+import TagManager from "react-gtm-module";
+import { useEffect } from "react";
 import type { AppProps } from 'next/app'
 
 export default function App({ Component, pageProps }: AppProps) {
+  useEffect(() => {
+    TagManager.initialize({ gtmId: "GTM-5CH82CJ" });
+  }, []);
+
   return (
+
     <>
       <Script
         id="Adsense-id"
