@@ -1,23 +1,32 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
-import styles from '@/styles/Home.module.css'
-import { useEffect } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import { useRouter } from 'next/router'
-
-
-const inter = Inter({ subsets: ['latin'] })
+import Audio from '../components/audio';
+import LongButton from '../components/longButton';
 
 export default function Home() {
-  const router = useRouter()
+  const [time, setTime] = useState(0)
+  const router = useRouter();
 
   useEffect(() => {
-    console.log(router)
-  }, [])
-  
+    if (!router.isReady) return;
+    const query = router.query;
+    if (query.s != null) {
+      setTime(query.s);
+    }
+  }, [router.isReady, router.query]);
+
   return (
     <>
-This is a test
+      <LongButton
+        callback={() => setTime(time + 1)}
+        label="+"
+      />
+      <LongButton
+        callback={() => setTime(time - 1)}
+        label="-"
+      />
+      <h1>{time}</h1>
+      <Audio count={time} />
     </>
   )
 }
