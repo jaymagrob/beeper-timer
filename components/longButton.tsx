@@ -17,7 +17,7 @@ export default function longButton(props: Props) {
 };
 
 
-export function UseLongPress(callback = () => { }, ms = 100) {
+export function UseLongPress(callback = () => { }, ms = 150) {
   const [startLongPress, setStartLongPress] = useState(false);
 
   useEffect(() => {
@@ -34,10 +34,16 @@ export function UseLongPress(callback = () => { }, ms = 100) {
   }, [callback, ms, startLongPress]);
 
   return {
-    onMouseDown: () => setStartLongPress(true),
+    onMouseDown: () => {
+      callback();
+      setStartLongPress(true)
+    },
     onMouseUp: () => setStartLongPress(false),
     onMouseLeave: () => setStartLongPress(false),
-    onTouchStart: () => setStartLongPress(true),
+    onTouchStart: () => {
+      callback();
+      setStartLongPress(true)
+    },
     onTouchEnd: () => setStartLongPress(false),
   };
 }
