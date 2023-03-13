@@ -13,16 +13,30 @@ export default function Home() {
     if (query.s != null) {
       setTime(query.s);
     }
-  }, [router.isReady, router.query]);
+  }, [router.isReady]);
 
+  const onclick = (positive: boolean) => {
+    return () => {
+      let newTime;
+      if(positive) {
+        newTime =  time + 1
+      } else {
+        newTime =  time === 0 ? 0 : time - 1;
+      }
+        setTime(newTime)
+        router.query.s = newTime
+        router.push(router);
+    }
+  }
+  
   return (
     <>
       <LongButton
-        callback={() => setTime(time + 1)}
+        callback={onclick(true)}
         label="+"
       />
       <LongButton
-        callback={() => setTime(time - 1)}
+        callback={onclick(false)}
         label="-"
       />
       <h1>{time}</h1>
