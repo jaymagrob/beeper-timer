@@ -4,7 +4,7 @@ export default function Audio({ count }) {
   const audioRef = createRef();
 
   useEffect(() => {
-    if(count) {
+    if(count === 0) {
       audioRef.current.play();
     }
   }, [count])
