@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import Audio from '../components/audio';
-import LongButton from '../components/longButton';
+import Settings from '../components/settings';
 
 export default function Home() {
   const [time, setTime] = useState(0)
@@ -11,34 +11,14 @@ export default function Home() {
     if (!router.isReady) return;
     const query = router.query;
     if (query.s != null) {
+      console.log('here------234')
       setTime(query.s);
     }
   }, [router.isReady]);
 
-  const onclick = (positive: boolean) => {
-    return () => {
-      let newTime;
-      if(positive) {
-        newTime =  time + 1
-      } else {
-        newTime =  time === 0 ? 0 : time - 1;
-      }
-        setTime(newTime)
-        router.query.s = newTime
-        router.push(router);
-    }
-  }
-  
   return (
     <>
-      <LongButton
-        callback={onclick(true)}
-        label="+"
-      />
-      <LongButton
-        callback={onclick(false)}
-        label="-"
-      />
+      <Settings />
       <h1>{time}</h1>
       <Audio count={time} />
     </>
