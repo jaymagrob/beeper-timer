@@ -18,7 +18,7 @@ export default function settings() {
       setTime(newTime)
     }
   }
-  
+
 
   const onSubmit = (e: React.FormEvent) => {
     router.push({
@@ -32,15 +32,34 @@ export default function settings() {
 
   return (
     <>
-        <LongButton
-          callback={onclick(true)}
-          label="+"
-        />
-        <LongButton
-          callback={onclick(false)}
-          label="-"
-        />
-        <button onClick={(e) => onSubmit(e)}>Set Time</button>
+      <div className="settings-container">
+        <div>
+          <input type="checkbox" id="toggle" aria-hidden="true"
+            defaultChecked={show}
+            onChange={() => setShow(!show)} />
+          <label htmlFor="toggle" className="nav__icon" aria-hidden="true">
+            Open settings
+            <span className="nav__icon-line"></span>
+            <span className="nav__icon-line"></span>
+            <span className="nav__icon-line"></span>
+          </label>
+        </div>
+        {show && (
+          <div className="settings-main">
+            <LongButton
+              callback={onclick(true)}
+              label="+"
+            />
+            <LongButton
+              callback={onclick(false)}
+              label="-"
+            />
+            <button onClick={(e) => onSubmit(e)}>Set Time</button>
+          </div>
+        )}
+      </div>
+
     </>
+
   )
 }
