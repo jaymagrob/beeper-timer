@@ -1,26 +1,35 @@
 * {
   font-family: Helvetica, sans-serif;
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
   background-color: lightblue;
 }
 
+.settings-container {
+  position: fixed;
+  width: 99vw;
+  background: red;
+  margin: 10px;
+}
+
+.settings-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .nav__icon {
   display: block;
-  position: absolute;
-  top: 20px;
-  right: 13px;
-  height: 27px;
-  width: 27px;
   cursor: pointer;
   text-indent: -9999px;
   transition: all 1s cubic-bezier(0.19, 1, 0.22, 1);
   border: none;
   color: transparent;
   text-shadow: 0 0 0 gray;
-  text-align: center;
 }
 .nav__icon:focus {
   outline: none;
@@ -68,9 +77,4 @@ input[type=checkbox]:checked ~ label .nav__icon-line:nth-child(3) {
   top: 14px;
   width: 27px;
   transform: translateX(-5px) rotate(45deg) translateY(-8px);
-}
-
-.settings-main {
-  position: absolute;
-  height: 400px;
 }

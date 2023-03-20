@@ -33,7 +33,7 @@ export default function settings() {
   return (
     <>
       <div className="settings-container">
-        <div>
+        <div className="settings-nav">
           <input type="checkbox" id="toggle" aria-hidden="true"
             defaultChecked={show}
             onChange={() => setShow(!show)} />
