@@ -37,9 +37,11 @@ export default function Home() {
   return (
     <>
       <Settings />
+      <main>
       <h1>{time}</h1>
-      <Audio count={countdown} />
+      <Audio count={time} />
       {countdown}
+      </main>
     </>
   )
 }

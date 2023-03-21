@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
+import Head from 'next/head'
 import LongButton from '../components/longButton';
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
 
 export default function settings() {
   const [time, setTime] = useState(30)
@@ -32,17 +34,14 @@ export default function settings() {
 
   return (
     <>
+      <Head>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+      </Head>
       <div className="settings-container">
         <div className="settings-nav">
-          <input type="checkbox" id="toggle" aria-hidden="true"
-            defaultChecked={show}
-            onChange={() => setShow(!show)} />
-          <label htmlFor="toggle" className="nav__icon" aria-hidden="true">
-            Open settings
-            <span className="nav__icon-line"></span>
-            <span className="nav__icon-line"></span>
-            <span className="nav__icon-line"></span>
-          </label>
+          <a href="javascript:void(0);" className="icon" onClick={() => setShow(!show)}>
+          <i className={`fa fa-${show ? 'times' : 'bars'}`} />
+          </a>
         </div>
         {show && (
           <div className="settings-main">
