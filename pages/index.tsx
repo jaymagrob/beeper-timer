@@ -25,10 +25,9 @@ export default function Home() {
     if(!startTime) return;
 
     if (!countdown) {
-      setCountdown(time)
       clearInterval(interval);
       setInterval2(setInterval(() => {
-        setCountdown(countdown - 1);
+        countdown === 0 ? setCountdown(time) : setCountdown(countdown - 1);
       }, 1000))
     } else {
       // save interval to clear the interval when the
