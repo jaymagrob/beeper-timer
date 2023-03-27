@@ -4,9 +4,9 @@ import Audio from '../components/audio';
 import Settings from '../components/settings';
 
 export default function Home() {
-  const [time, setTime] = useState(0)
+  const [time, setTime] = useState(30)
   const [countdown, setCountdown] = useState(time)
-  const [nextBeep, setNextBeep] = useState(null);
+  const [changeTime, setChangeTime] = useState(time)
   const router = useRouter();
   const [startTime, setStartTimer] = useState(false)
   const [interval, setInterval2] = useState(null)
@@ -46,7 +46,14 @@ export default function Home() {
 
   return (
     <>
-      <Settings />
+      <Settings
+        currentSetting={time}
+        onChange={(newNumber) => {
+          clearInterval(interval)
+          setTime(newNumber);
+          setCountdown(newNumber);
+        }}
+      />
       <main>
       <h1>{time}</h1>
       <button onClick={() => setStartTimer(true)}>Start Timer</button>

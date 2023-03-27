@@ -2,10 +2,13 @@ import React, { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import Head from 'next/head'
 import LongButton from '../components/longButton';
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
 
-export default function settings() {
-  const [time, setTime] = useState(30)
+type Props = {
+  onChange: (newNumber: number) => void;
+  currentSetting: number;
+ }
+export default function settings(props: Props) {
+  const [time, setTime] = useState(props.currentSetting)
   const [show, setShow] = useState(false)
   const router = useRouter();
 
@@ -30,6 +33,8 @@ export default function settings() {
       undefined,
       {}
     )
+    props.onChange(time);
+    setShow(false);
   }
 
   return (
@@ -45,6 +50,7 @@ export default function settings() {
         </div>
         {show && (
           <div className="settings-main">
+            {time}
             <LongButton
               callback={onclick(true)}
               label="+"
