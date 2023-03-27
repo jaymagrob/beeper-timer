@@ -6,7 +6,6 @@ import Settings from '../components/settings';
 export default function Home() {
   const [time, setTime] = useState(30)
   const [countdown, setCountdown] = useState(time)
-  const [changeTime, setChangeTime] = useState(time)
   const router = useRouter();
   const [startTime, setStartTimer] = useState(false)
   const [interval, setInterval2] = useState(null)
@@ -15,8 +14,8 @@ export default function Home() {
     if (!router.isReady) return;
     const query = router.query;
     if (query.s != null) {
-      setTime(query.s);
-      setCountdown(query.s);
+      setTime(query.s as any);
+      setCountdown(query.s as any);
     }
   }, [router.isReady]);
 

@@ -5,7 +5,7 @@ type Props = {
   label: string;
 };
 
-export default function longButton(props: Props) {
+export default function LongButton(props: Props) {
   const { callback, label } = props;
   const backspaceLongPress = UseLongPress(callback);
 
@@ -21,7 +21,8 @@ export function UseLongPress(callback = () => { }, ms = 150) {
   const [startLongPress, setStartLongPress] = useState(false);
 
   useEffect(() => {
-    let timerId;
+    let timerId: ReturnType<any>;
+
     if (startLongPress) {
       timerId = setTimeout(callback, ms);
     } else {

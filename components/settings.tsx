@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { useRouter } from 'next/router'
 import Head from 'next/head'
 import LongButton from '../components/longButton';
@@ -6,8 +6,9 @@ import LongButton from '../components/longButton';
 type Props = {
   onChange: (newNumber: number) => void;
   currentSetting: number;
- }
-export default function settings(props: Props) {
+}
+
+export default function Settings(props: Props) {
   const [time, setTime] = useState(props.currentSetting)
   const [show, setShow] = useState(false)
   const router = useRouter();
@@ -45,7 +46,7 @@ export default function settings(props: Props) {
       <div className="settings-container">
         <div className="settings-nav">
           <a href="javascript:void(0);" className="icon" onClick={() => setShow(!show)}>
-          <i className={`fa fa-${show ? 'times' : 'bars'}`} />
+            <i className={`fa fa-${show ? 'times' : 'bars'}`} />
           </a>
         </div>
         {show && (

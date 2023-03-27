@@ -1,7 +1,11 @@
-import React, { useEffect, createRef } from "react";
+import { useEffect } from "react";
 
-export default function AudioFun({ count }) {
-  const audioRef = createRef();
+type Props = {
+  count: number;
+}
+
+export default function AudioFun(props: Props) {
+  const { count } = props;
 
   useEffect(() => {
     if (count === 0) {
