@@ -10,6 +10,24 @@ export default function Home() {
   const [startTime, setStartTimer] = useState(false)
   const [interval, setInterval2] = useState(null)
 
+  const [color, setColor] = useState('#ADD8E6')
+  const [textColor, setTextColor] = useState('#000')
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const bgColorStore = localStorage.getItem('bgColor')
+      const textColorStore = localStorage.getItem('textColor')
+
+      if (bgColorStore) {
+        setColor(bgColorStore);
+      }
+      if (textColorStore) {
+        setTextColor(textColorStore);
+      }
+
+    }
+  }, []);
+
   useEffect(() => {
     if (!router.isReady) return;
     const query = router.query;
@@ -21,7 +39,7 @@ export default function Home() {
 
   useEffect(() => {
     // exit early when we reach 0
-    if(!startTime) return;
+    if (!startTime) return;
 
     if (!countdown) {
       clearInterval(interval);
@@ -35,7 +53,7 @@ export default function Home() {
         setCountdown(countdown - 1);
       }, 1000));
     };
-      
+
     // clear interval on re-render to avoid memory leaks
     return () => clearInterval(interval);
     // add countdown as a dependency to re-rerun the effect
@@ -46,6 +64,10 @@ export default function Home() {
   return (
     <>
       <Settings
+        onColorChange={setColor}
+        onTextColorChange={setTextColor}
+        bgColor={color}
+        textColor={textColor}
         currentSetting={time}
         onChange={(newNumber) => {
           clearInterval(interval)
@@ -53,12 +75,12 @@ export default function Home() {
           setCountdown(newNumber);
         }}
       />
-      <main>
-      <h1>{time}</h1>
-      <button onClick={() => setStartTimer(true)}>Start Timer</button>
-      <Audio count={countdown} />
-      Time: {time}
-      Countdown: {countdown}
+      <main style={{ background: color }}>
+        <h1 style={{ color: textColor }}>{time}</h1>
+        <button onClick={() => setStartTimer(true)}>Start Timer</button>
+        <Audio count={countdown} />
+        Time: {time}
+        Countdown: {countdown}
       </main>
     </>
   )

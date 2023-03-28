@@ -2,10 +2,15 @@ import React, { useState } from 'react'
 import { useRouter } from 'next/router'
 import Head from 'next/head'
 import LongButton from '../components/longButton';
+import ColorPicker from './colorPicker';
 
 type Props = {
   onChange: (newNumber: number) => void;
+  onColorChange: (color: any) => void;
+  onTextColorChange: (color: any) => void;
   currentSetting: number;
+  bgColor: string;
+  textColor: string;
 }
 
 export default function Settings(props: Props) {
@@ -61,6 +66,20 @@ export default function Settings(props: Props) {
               label="-"
             />
             <button onClick={(e) => onSubmit(e)}>Set Time</button>
+            <ColorPicker
+              callback={(e) => {
+                localStorage.setItem("bgColor", e);
+                props.onColorChange(e)
+              }}
+              oldColor={props.bgColor}
+            />
+            <ColorPicker
+              callback={(e) => {
+                localStorage.setItem("textColor", e);
+                props.onTextColorChange(e)
+              }}
+              oldColor={props.textColor}
+            />
           </div>
         )}
       </div>
