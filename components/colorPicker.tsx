@@ -23,7 +23,6 @@ export default function ColorPicker(props: Props) {
     setColor(color2.hex)
   };
 
-  console.log(color);
   const styles = reactCSS({
     'default': {
       color: {

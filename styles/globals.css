@@ -6,7 +6,8 @@
 }
 
 body {
-  background-color: lightblue;
+  background-color: #083D77;
+  color: #eee;
 }
 
 .settings-container {
@@ -17,11 +18,25 @@ body {
 }
 
 .settings-main {
-  min-height: calc(50vh);
+  min-height: calc(1vh);
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: chartreuse;
+  -webkit-animation: slide 0.5s forwards;
+  animation: slide 0.5s forwards;
 }
+
+@-webkit-keyframes slide {
+0% { min-height: calc(1vh); }
+100% { min-height: calc(50vh); }
+}
+
+@keyframes slide {
+  0% { min-height: calc(1vh); }
+100% { min-height: calc(50vh); }
+}
+
 
 .settings-nav {
   display: flex;
@@ -37,6 +52,14 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 }
 
-
+.start-button {
+  margin: 1rem;
+  padding: 3rem;
+  background-color: transparent;
+  border: #eee solid 3px;
+  border-radius: 25%;
+  color: #eee
+}

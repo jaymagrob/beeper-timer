@@ -10,8 +10,8 @@ export default function Home() {
   const [startTime, setStartTimer] = useState(false)
   const [interval, setInterval2] = useState(null)
 
-  const [color, setColor] = useState('#ADD8E6')
-  const [textColor, setTextColor] = useState('#000')
+  const [color, setColor] = useState('#083D77')
+  const [textColor, setTextColor] = useState('#eee')
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -75,12 +75,12 @@ export default function Home() {
           setCountdown(newNumber);
         }}
       />
-      <main style={{ background: color }}>
-        <h1 style={{ color: textColor }}>{time}</h1>
-        <button onClick={() => setStartTimer(true)}>Start Timer</button>
+      <main style={{ color: textColor, background: color }}>
+        <p>Beeping in</p>
+        <p>{countdown}</p>
+        <p>seconds</p>
+        {!startTime && <button className="start-button" onClick={() => setStartTimer(true)}>Start Timer</button>}
         <Audio count={countdown} />
-        Time: {time}
-        Countdown: {countdown}
       </main>
     </>
   )
