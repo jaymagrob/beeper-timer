@@ -1,7 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://www.change.com/</loc>
+    <loc>https://www.beepevery.com/</loc>
     <lastmod>2020-03-26</lastmod>
     <priority>1.00</priority>
+  </url>
+  <url>
+    <loc>https://www.beepevery.com/pace/privacy-policy</loc>
+    <lastmod>2020-03-26</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://www.beepevery.com/pace/terms-of-use</loc>
+    <lastmod>2020-03-26</lastmod>
+    <priority>0.80</priority>
+  </url>
 </urlset>
+

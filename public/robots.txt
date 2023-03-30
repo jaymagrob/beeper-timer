@@ -1,4 +1,4 @@
-Sitemap: 'https://www.change.com/sitemap.xml'
+Sitemap: 'https://www.beepevery.com/sitemap.xml'
 
 User-agent: *
 Disallow:
