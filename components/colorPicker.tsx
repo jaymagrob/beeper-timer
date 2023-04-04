@@ -4,7 +4,8 @@ import { SketchPicker } from 'react-color'
 
 type Props = {
   callback: (color: any) => void;
-  oldColor: string
+  oldColor: string;
+  label: string;
 }
 export default function ColorPicker(props: Props) {
   const [displayColorPicker, setDisplayColorPicker] = useState(false)
@@ -55,14 +56,14 @@ export default function ColorPicker(props: Props) {
 
   return (
     <div>
-      <div style={styles.swatch} onClick={handleClick}>
+      <span>{props.label}</span>
+      <span style={styles.swatch} onClick={handleClick}>
         <div style={styles.color} />
-      </div>
+      </span>
       {displayColorPicker ? <div style={styles.popover}>
         <div style={styles.cover} onClick={handleClose} />
         <SketchPicker color={color} onChange={handleChange} />
       </div> : null}
-
     </div>
   )
 }

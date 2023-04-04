@@ -13,35 +13,58 @@ body {
 .settings-container {
   position: fixed;
   width: 99vw;
-  background: red;
   margin: 10px;
+}
+
+p.medium {
+  font-size: 7rem;
+}
+p.large {
+  font-size: 15rem;
 }
 
 .settings-main {
   min-height: calc(1vh);
   display: flex;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   justify-content: center;
+  flex-direction: column;
   align-items: center;
-  background-color: chartreuse;
+  gap: 20px;
   -webkit-animation: slide 0.5s forwards;
   animation: slide 0.5s forwards;
+  font-size: 3rem;
+}
+
+.settings-main button {
+  font-size: 2rem;
+  padding: 5px;
+  margin: 5px;
+  min-width: 40px;
 }
 
 @-webkit-keyframes slide {
 0% { min-height: calc(1vh); }
-100% { min-height: calc(50vh); }
+100% { min-height: calc(100vh - 50px); }
 }
 
 @keyframes slide {
   0% { min-height: calc(1vh); }
-100% { min-height: calc(50vh); }
+100% { min-height: calc(100vh - 50px); }
 }
 
 
 .settings-nav {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: right;
+  margin: 10px;
+}
+
+.settings-nav i {
+  color: white;
+  font-size: 2rem;
 }
 
 main {

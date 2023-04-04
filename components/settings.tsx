@@ -15,7 +15,7 @@ type Props = {
 
 export default function Settings(props: Props) {
   const [time, setTime] = useState(props.currentSetting)
-  const [show, setShow] = useState(false)
+  const [show, setShow] = useState(true)
   const router = useRouter();
 
   const onclick = (positive: boolean) => {
@@ -56,21 +56,12 @@ export default function Settings(props: Props) {
         </div>
         {show && (
           <div className="settings-main">
-            {time}
-            <LongButton
-              callback={onclick(true)}
-              label="+"
-            />
-            <LongButton
-              callback={onclick(false)}
-              label="-"
-            />
-            <button onClick={(e) => onSubmit(e)}>Set Time</button>
             <ColorPicker
               callback={(e) => {
                 localStorage.setItem("bgColor", e);
                 props.onColorChange(e)
               }}
+              label="Change background color: "
               oldColor={props.bgColor}
             />
             <ColorPicker
@@ -78,8 +69,22 @@ export default function Settings(props: Props) {
                 localStorage.setItem("textColor", e);
                 props.onTextColorChange(e)
               }}
+              label="Change text color: "
               oldColor={props.textColor}
             />
+            Countdown: {time}
+            <div>
+              <LongButton
+                callback={onclick(true)}
+                label="+"
+              />
+              <LongButton
+                callback={onclick(false)}
+                label="-"
+              />
+            </div>
+            <button onClick={(e) => onSubmit(e)}>Set Time</button>
+
           </div>
         )}
       </div>

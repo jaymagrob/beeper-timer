@@ -76,9 +76,9 @@ export default function Home() {
         }}
       />
       <main style={{ color: textColor, background: color }}>
-        <p>Beeping in</p>
-        <p>{countdown}</p>
-        <p>seconds</p>
+        <p className="medium">Beeping in</p>
+        <p className="large">{countdown}</p>
+        <p className="medium">seconds</p>
         {!startTime && <button className="start-button" onClick={() => setStartTimer(true)}>Start Timer</button>}
         <Audio count={countdown} />
       </main>
