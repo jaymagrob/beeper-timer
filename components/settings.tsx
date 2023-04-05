@@ -15,7 +15,7 @@ type Props = {
 
 export default function Settings(props: Props) {
   const [time, setTime] = useState(props.currentSetting)
-  const [show, setShow] = useState(true)
+  const [show, setShow] = useState(false)
   const router = useRouter();
 
   const onclick = (positive: boolean) => {
